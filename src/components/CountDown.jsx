@@ -1,46 +1,55 @@
 import React, { useState, useEffect } from 'react';
+import '../styles/countDownStyles.css'; // Import CSS for styling
 
 const CountdownTimer = () => {
-  const [currentTime, setCurrentTime] = useState(new Date());
-  const [targetDate, setTargetDate] = useState(new Date('2024-04-21T23:00:00')); // Set target date and time
-  const [difference, setDifference] = useState(null);
+  const [countdown, setCountdown] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
 
   useEffect(() => {
-    const calculateDifference = () => {
-      const timeLeft = targetDate.getTime() - currentTime.getTime();
-      setDifference(timeLeft);
-    };
+    const countdownDate = new Date('2024-04-21T00:00:00').getTime();
 
-    const intervalId = setInterval(calculateDifference, 1000); // Update every second
+    const countdownInterval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
 
-    calculateDifference(); // Run initially
+      if (distance < 0) {
+        clearInterval(countdownInterval);
+        return;
+      }
 
-    return () => clearInterval(intervalId); // Cleanup on unmount
-  }, [currentTime, targetDate]);
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  const renderCountdown = () => {
-    if (difference <= 0) {
-      return <div>Time's Up! 🎉</div>;
-    }
+      setCountdown({ days, hours, minutes, seconds });
+    }, 1000);
 
-    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-    return (
-      <div>
-        {days > 0 && <span>{days} Days </span>}
-        {hours > 0 && <span>{hours.toString().padStart(2, '0')} hrs </span>}
-        {minutes > 0 && <span>{minutes.toString().padStart(2, '0')} mins </span>}
-        {seconds > 0 && <span>{seconds.toString().padStart(2, '0')} secs</span>}
-      </div>
-    );
-  };
+    return () => clearInterval(countdownInterval);
+  }, []);
 
   return (
-    <div className="countdown-timer">
-      {renderCountdown()}
+    <div className="countdown">
+      <div className="countdown-item">
+        <span>{countdown.days}</span>
+        <span>Days</span>
+      </div>
+      <div className="countdown-item">
+        <span>{countdown.hours}</span>
+        <span>Hours</span>
+      </div>
+      <div className="countdown-item">
+        <span>{countdown.minutes}</span>
+        <span>Minutes</span>
+      </div>
+      <div className="countdown-item">
+        <span>{countdown.seconds}</span>
+        <span>Seconds</span>
+      </div>
     </div>
   );
 };
