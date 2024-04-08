@@ -20,7 +20,7 @@ const CountdownTimer = () => {
 
   const renderCountdown = () => {
     if (difference <= 0) {
-      return <div>Time's Up!</div>;
+      return <div>Time's Up! 🎉</div>;
     }
 
     const days = Math.floor(difference / (1000 * 60 * 60 * 24));
