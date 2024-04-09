@@ -1,6 +1,7 @@
 import React from "react";
 import CountdownTimer from "./CountDown";
 import { Details } from "./Details";
+import cartoonWeddding from "../assets/weddingcartoon.png";
 
 export const Home = () => {
   return (
@@ -14,6 +15,9 @@ export const Home = () => {
             marginTop: "10px",
           }}
         ></img>
+      </div>
+      <div className="imageBox">
+        <img src={cartoonWeddding} alt="cartoonweddingimg" />
       </div>
       <div>
         <CountdownTimer />

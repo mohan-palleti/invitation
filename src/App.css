@@ -7,6 +7,16 @@
   font-weight: 900;
 }
 
+.imageBox {
+  background: transparent;
+  display: flex;
+  justify-content: center;
+}
+.imageBox img {
+  height: 100px;
+  width: 100px;
+}
+
 .addressBox {
   font-family: "Roboto";
   text-align: center;
