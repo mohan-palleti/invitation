@@ -1,28 +1,19 @@
-import { useEffect, useLayoutEffect, useState } from 'react'
-import './App.css'
-import { StrictMode } from 'react'
-import Loader from './components/Loader'
-import { Home } from './components/Home'
-import { Details } from './components/Details'
+import { useEffect, useLayoutEffect, useState } from "react";
+import "./App.css";
+import { StrictMode } from "react";
+import Loader from "./components/Loader";
+import { Home } from "./components/Home";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  console.log("loading:", loading);
+  useLayoutEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, []);
 
-  const [loading, setLoading] = useState(true)
-  console.log('loading:', loading)
-useLayoutEffect(()=>{
-
-  setTimeout(() => {
-    setLoading(false)
-  }, 3000)
-},[])
-
-  return (
-    <>
-       {loading ? <Loader /> : <Home/>}
-       <Details/>
-
-    </>
-  )
+  return <>{loading ? <Loader /> : <Home />}</>;
 }
 
-export default App
+export default App;
