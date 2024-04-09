@@ -3,6 +3,7 @@ import './App.css'
 import { StrictMode } from 'react'
 import Loader from './components/Loader'
 import { Home } from './components/Home'
+import { Details } from './components/Details'
 
 function App() {
 
@@ -18,7 +19,8 @@ useLayoutEffect(()=>{
   return (
     <>
        {loading ? <Loader /> : <Home/>}
-  
+       <Details/>
+
     </>
   )
 }
