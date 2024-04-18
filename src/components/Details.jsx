@@ -8,7 +8,7 @@ export const Details = () => {
     <div>
       <div className="addressBox">
         <h3>Venue Details:</h3>
-        <p>Address: Pedagantyda , Gajuwaka, Visakhaptnam - 530044</p>
+        <p>Address: PIWA Community Hall, Pedagantyda , Gajuwaka, Visakhaptnam - 530044</p>
         <p>Phone: 9490964423</p>
         <div className="buttonBox">
           <button
@@ -29,7 +29,7 @@ export const Details = () => {
         <div className="buttonBox">
           <button
             className="contactBtn"
-            onClick={() => window.open("tel:7075099932")}
+            onClick={() => window.open("tel:9490964423")}
           >
             <img
               width="20"
