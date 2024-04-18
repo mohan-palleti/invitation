@@ -44,7 +44,7 @@
   color: white;
   width: 98%;
   box-sizing: border-box;
-  margin-top: 100px;
+  margin-top: 60px;
   /* Add linear gradient border */
   border: 2px solid transparent;
   border-image: linear-gradient(to right, rgb(22, 192, 238), rgb(230, 5, 136));
